@@ -217,3 +217,155 @@ if (!percentage.includes(15)) {
 }
 //includes end
 /*###########################################################################*/
+
+/*###########################################################################*/
+//foreach
+const monthlySalary = [16632, 16032, 15723, 16032, 14800, 16900];
+const epfDeductionOnSalary = 0.12;
+const monthlyEpf = [];
+
+//benefit of foreach loop is we can use index but in forof loop can't
+monthlySalary.forEach((salary, idx, monSal) => {
+  const obj = {
+    index: idx,
+    sal: salary,
+    epfDeduction: salary * epfDeductionOnSalary,
+  };
+  monthlyEpf.push(obj);
+});
+
+console.log(monthlyEpf);
+//foreach end
+/*###########################################################################*/
+
+/*###########################################################################*/
+//map
+const mobliePrices = [20000, 12999.99, 34000, 15999.99, 12999.99, 10500.5];
+const gst = 0.18;
+
+//change elements on array and return brand new array or address
+const _finalPrice = mobliePrices.map((price, idx, mobPri) => {
+  const finalMobilePrice = {
+    index: idx,
+    finalPrice: price * gst + mobliePrices[idx],
+    mobPr: mobPri,
+  };
+
+  return finalMobilePrice;
+});
+
+console.log(mobliePrices, _finalPrice);
+//map end
+/*###########################################################################*/
+
+/*###########################################################################*/
+//sort and reversing
+const names = ["meet", "sumeet", "hareet", "reet", "bhanu", "kavita"];
+const numbers = [10, 20, 44, 55, 66, 3.22, 7, -9];
+
+const sortedNames = names.sort();
+console.log(sortedNames);
+
+//sort() by default converts everything to a string and then sorts
+let sortedNumbers = numbers.sort((a, b) => {
+  return a - b; //ascending order [1 2 3 4 5]
+});
+console.log(sortedNumbers);
+
+sortedNumbers = numbers.sort((a, b) => {
+  return b - a; //descending order [5 4 3 2 1]
+});
+console.log(sortedNumbers);
+
+//reverse()
+const reverseSortedNumbers = sortedNumbers.reverse();
+console.log(reverseSortedNumbers);
+
+const reverseNames = names.reverse();
+console.log(reverseNames);
+//sort and reversing end
+/*###########################################################################*/
+
+/*###########################################################################*/
+//filter
+const percentages = [
+  70, 80, 75, 45, 65, 73, 90, 95, 55, 54, 36, 62, 61, 59, 87,
+];
+
+//filter return condition based array
+// const filteredPercentages = percentages.filter((percent) => percent > 60); //arrow fun advantage
+const filteredPercentages = percentages.filter((percent, idx, arr) => {
+  return percent > 60;
+});
+
+console.log(filteredPercentages);
+//filter end
+/*###########################################################################*/
+
+/*###########################################################################*/
+//reduce
+const __monthlySalary = [
+  80000, 70000, 65235, 74521, 63254, 98666, 74235, 86666, 63214, 99412, 74215,
+  105249,
+];
+
+//reduce() can reduce and array of values to a simpler value
+const sum = __monthlySalary.reduce((preVal, curVal, idx, arr) => {
+  return preVal + curVal;
+}, 0);
+
+console.log(sum);
+//reduce end
+/*###########################################################################*/
+
+//split and join for strings
+/*###########################################################################*/
+const data = "Meet;8770851929;Bhopal";
+
+//split() check the delimeter and return the array
+const transformedData = data.split(";");
+console.log(transformedData);
+
+//join works opposite of split, with the help of separator and join the array into one single string
+//it will always generates a string
+const fullName = ["Meet", "Kumar", "Vishwakarma"];
+const joinName = fullName.join("-");
+console.log(joinName);
+//split and join for strings end
+/*###########################################################################*/
+
+/*###########################################################################*/
+//speard operator ...
+const computerComponents = ["RAM", "Processor", "Hard Drive", "CPU"];
+
+//speard operator ... pull out elements in an array and
+//copied all elements and gives brand new address or reference
+const copiedComputerComponents = [...computerComponents];
+computerComponents.push("Graphic Card");
+console.log(computerComponents, copiedComputerComponents);
+
+console.log(Math.min(...__monthlySalary)); //find min pass array as an arg using speard operator
+
+//when copying the array of objects then copied reference which is hold the objects in an array
+const booksNames = [
+  { name: "Maths" },
+  { name: "Science" },
+  { name: "Physics" },
+];
+
+//copying the elements but object refereces are still same in the memory
+const copiedBookNames = [...booksNames];
+console.log(booksNames, copiedBookNames);
+
+//as we know references are still same in an array then changes one object it reflects same to other array
+booksNames[0].name = "Mathametics"; //same reference for both arrays
+console.log(booksNames, copiedBookNames);
+
+//if want to make a new copy of object
+const newCopiedBookNames = [
+  ...booksNames.map((value) => ({ name: value.name })),
+];
+booksNames[0].name = "Hindi";
+console.log(booksNames, newCopiedBookNames); //now newCopiedBookNames is not affected
+//speard operator ... end
+/*###########################################################################*/
