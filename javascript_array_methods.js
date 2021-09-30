@@ -369,3 +369,94 @@ booksNames[0].name = "Hindi";
 console.log(booksNames, newCopiedBookNames); //now newCopiedBookNames is not affected
 //speard operator ... end
 /*###########################################################################*/
+
+/*###########################################################################*/
+//Array Destructuring
+//spliting an array elements into variables, it works left to right
+//... rest operator
+const [yes, no, ...restValues] = [true, false, 1, 5, 4, 6, 7, 9];
+
+console.log(yes, no, restValues);
+
+//Array Destructuring end
+/*###########################################################################*/
+
+/*###########################################################################*/
+//Sets
+//Sets useful for managing unique values
+//Set duplicates are not allowed and order is not gauranteed
+//Set data has arranged in sorted order
+const num = [1, 2, 3, 6, 1, 4, 8, 5, 9, 14, 2, 1, 3, 6, 5, 14, 18, 9];
+
+const ids = new Set(num);
+ids.add(16);
+ids.add(1);
+
+console.log(ids);
+console.log(ids.entries());
+console.log(ids.keys());
+console.log(ids.values());
+
+for (const itr of ids.values()) {
+	console.log(itr);
+}
+
+if (ids.has(6)) {
+	console.log("Found");
+}
+
+for (const i of ids.entries()) {
+	console.log(i);
+}
+
+if (ids.has(1)) {
+	ids.delete(1);
+}
+
+console.log(ids);
+
+//Sets end
+/*###########################################################################*/
+
+/*###########################################################################*/
+//Map
+//Map stores data in key value pair any kind of length, key values are allowed
+//order is gauranteed, key based access, duplicate keys are not allowed but values can be duplicate
+const person1 = { name: "Meet" };
+const person2 = { name: "Surendra" };
+
+//use case, you could a map is that you want to attach some extra info to each person
+//you don't really merge extra info this obj coz you use these obj in multiple places
+const newPersonData = new Map([[person1, [{ date: "Thursday", price: 14 }]]]);
+console.log(newPersonData.get(person1));
+
+newPersonData.set(person2, [{ date: "Friday", price: 16 }]);
+console.log(newPersonData);
+
+newPersonData.set("Key", "Value");
+console.log(newPersonData);
+
+for (const i of newPersonData.entries()) {
+	console.log(i);
+}
+
+for (const i of newPersonData.values()) {
+	console.log(i);
+}
+
+//array destructuring
+for (const [key, value] of newPersonData.entries()) {
+	console.log(key, value);
+}
+
+//working only with keys
+for (const key of newPersonData.keys()) {
+	console.log(key);
+}
+
+//working only with values
+for (const val of newPersonData.values()) {
+	console.log(val);
+}
+//Map end
+/*###########################################################################*/
